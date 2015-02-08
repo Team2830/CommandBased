@@ -36,6 +36,7 @@ public class RobotMap {
     public static Encoder driveTrainQuadratureEncoder2;
     public static Encoder driveTrainQuadratureEncoder3;
     public static Encoder driveTrainQuadratureEncoder4;
+    public static Solenoid chuckSolenoid1;
     public static CANJaguar elevatorCANJaguar1;
     public static AnalogPotentiometer elevatorAnalogPotentiometer1;
 
@@ -82,10 +83,13 @@ public class RobotMap {
         LiveWindow.addSensor("DriveTrain", "Quadrature Encoder 4", driveTrainQuadratureEncoder4);
         driveTrainQuadratureEncoder4.setDistancePerPulse(1.0);
         driveTrainQuadratureEncoder4.setPIDSourceParameter(PIDSourceParameter.kRate);
-        elevatorCANJaguar1 = new CANJaguar(2);
+        chuckSolenoid1 = new Solenoid(0, 0);
+        LiveWindow.addActuator("Chuck", "Solenoid 1", chuckSolenoid1);
+        
+        elevatorCANJaguar1 = new CANJaguar(3);
         
         
-        elevatorAnalogPotentiometer1 = new AnalogPotentiometer(1, 1.0, 0.0);
+        elevatorAnalogPotentiometer1 = new AnalogPotentiometer(2, 1.0, 0.0);
         LiveWindow.addSensor("Elevator", "Analog Potentiometer 1", elevatorAnalogPotentiometer1);
         
 

@@ -67,9 +67,9 @@ public class OI {
         driverJoystick = new Joystick(0);
         
         joystickButton2 = new JoystickButton(driverJoystick, 2);
-        joystickButton2.whileHeld(new OpenChuck());
+        joystickButton2.whenPressed(new FieldCentricDrive());
         joystickButton4 = new JoystickButton(driverJoystick, 4);
-        joystickButton4.whileHeld(new CloseChuck());
+        joystickButton4.whenPressed(new RoboticCentricDrive());
 
 	    
         // SmartDashboard Buttons
@@ -90,8 +90,6 @@ public class OI {
         SmartDashboard.putData("Operator Control Chuck", new OperatorControlChuck());
 
         SmartDashboard.putData("Operator Control Elevator", new OperatorControlElevator());
-
-        SmartDashboard.putData("Lift to Place on Tote", new LifttoPlaceonTote());
 
         SmartDashboard.putData("Prepare to Grab Tote", new PreparetoGrabTote());
 

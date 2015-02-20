@@ -62,6 +62,12 @@ public class DriveTrain extends Subsystem {
 				this.getRotatingSpeed(), this.getGyroAngle());
 	}
 
+	public void robotCentricDrive() {
+		robotDrive.mecanumDrive_Cartesian(
+				Robot.oi.driverJoystick.getAxis(Joystick.AxisType.kX),
+				Robot.oi.driverJoystick.getAxis(Joystick.AxisType.kY),
+				this.getRotatingSpeed(), 0);
+	}
 	/**
 	 * If Robot is not rotating, @return 0
 	 * 
@@ -86,12 +92,11 @@ public class DriveTrain extends Subsystem {
 		    		if (this.getGyroAngle() - this.getSetPoint() < 0) {
 		    			return gyroCorrection; 		//Didn't quite go far enough
 		    		}else {
-		    			rotatingSpeed = -gyroCorrection;		//Went too far
+		    			return -gyroCorrection;		//Went too far
 		    		}
 		    	}
 			}
 			}
-		return 0;
 	}
 	/**
 	 * Is the robot Rotating?
